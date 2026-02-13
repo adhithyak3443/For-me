@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Women</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #0d0d12;
+        color: #f5f5f5;
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+        position: relative;
+      }
+      /* GOLD DUST CANVAS */
+      #gold-dust {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+      }
+      /* Keep content above dust */
+      .hero,
+      .section,
+      footer,
+      .corner {
+        position: relative;
+        z-index: 2;
+      }
+      /* ========================= */
+      /* GOLD ORNAMENT CORNERS */
+      /* ========================= */
+      .corner {
+        position: fixed;
+        width: 180px;
+        height: 180px;
+        z-index: 999;
+        pointer-events: none;
+      }
+      .corner svg {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+      }
+      /* Positions */
+      .top-left {
+        top: 20px;
+        left: 20px;
+      }
+      .top-right {
+        top: 20px;
+        right: 20px;
+        transform: scaleX(-1);
+      }
+      .bottom-left {
+        bottom: 20px;
+        left: 20px;
+        transform: scaleY(-1);
+      }
+      .bottom-right {
+        bottom: 20px;
+        right: 20px;
+        transform: scale(-1);
+      }
+      /* HERO */
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+      .hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        letter-spacing: 2px;
+        animation: fadeUp 2s ease forwards;
+      }
+      .hero p {
+        margin-top: 20px;
+        max-width: 600px;
+        line-height: 1.8;
+        opacity: 0;
+        animation: fadeUp 2s ease forwards;
+        animation-delay: 1s;
+      }
+      .section {
+        padding: 100px 20px;
+        text-align: center;
+      }
+      .section h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+      }
+      /* GALLERY */
+      .gallery {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      .gallery img {
+        width: 280px;
+        height: 380px;
+        object-fit: cover;
+        border-radius: 14px;
+        border: 1px solid rgba(212, 175, 55, 0.7);
+        transform: translateY(50px);
+        opacity: 0;
+        transition: transform 0.6s ease, box-shadow 0.6s ease;
+      }
+      .gallery img.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+      }
+      .memory-box {
+        max-width: 700px;
+        margin: auto;
+        line-height: 1.9;
+        color: #ddd;
+        font-size: 1.1rem;
+      }
+      footer {
+        padding: 50px;
+        text-align: center;
+        color: #aaa;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.4rem;
+        }
+      }
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.4rem;
+        }
+        .corner {
+          width: 110px;
+          height: 110px;
+        }
+        .top-left,
+        .top-right {
+          top: 10px;
+        }
+        .bottom-left,
+        .bottom-right {
+          bottom: 10px;
+        }
+        .top-left,
+        .bottom-left {
+          left: 10px;
+        }
+        .top-right,
+        .bottom-right {
+          right: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- GOLD DUST CANVAS -->
+    <canvas id="gold-dust"></canvas>
+    <!-- GOLD ORNAMENT CORNERS -->
+    <div class="corner top-left">
+      <svg viewBox="0 0 200 200">
+        <path d="M10 180 Q40 120 100 100 Q150 80 180 20" stroke="url(#gold)" stroke-width="4" fill="none" />
+        <defs>
+          <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b8902e" />
+            <stop offset="50%" stop-color="#f5e6a8" />
+            <stop offset="100%" stop-color="#b8902e" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="corner top-right">
+      <svg viewBox="0 0 200 200">
+        <path d="M10 180 Q40 120 100 100 Q150 80 180 20" stroke="url(#gold2)" stroke-width="4" fill="none" />
+        <defs>
+          <linearGradient id="gold2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b8902e" />
+            <stop offset="50%" stop-color="#f5e6a8" />
+            <stop offset="100%" stop-color="#b8902e" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="corner bottom-left">
+      <svg viewBox="0 0 200 200">
+        <path d="M10 180 Q40 120 100 100 Q150 80 180 20" stroke="url(#gold3)" stroke-width="4" fill="none" />
+        <defs>
+          <linearGradient id="gold3" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b8902e" />
+            <stop offset="50%" stop-color="#f5e6a8" />
+            <stop offset="100%" stop-color="#b8902e" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="corner bottom-right">
+      <svg viewBox="0 0 200 200">
+        <path d="M10 180 Q40 120 100 100 Q150 80 180 20" stroke="url(#gold4)" stroke-width="4" fill="none" />
+        <defs>
+          <linearGradient id="gold4" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b8902e" />
+            <stop offset="50%" stop-color="#f5e6a8" />
+            <stop offset="100%" stop-color="#b8902e" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <section class="hero">
+      <h1>Vanishikaa</h1>
+      <p> The first time I met you… You invited me to your home. I didn’t realize that day would quietly change my world. </p>
+    </section>
+    <section class="section">
+      <h2>Our Moments</h2>
+      <div class="gallery">
+        <img src="photo1.jpg" alt="">
+        <img src="photo2.jpg" alt="">
+        <img src="photo3.jpg" alt="">
+      </div>
+    </section>
+    <section class="section">
+      <h2>For You, Vani</h2>
+      <div class="memory-box"> You are elegance without trying. Calm, beautiful, and rare. From the moment I stepped into your home and saw you, something shifted inside me. This isn’t just a Valentine’s wish. It’s a thank you — for being you. </div>
+    </section>
+    <footer> Made with love, just for you ❤️ </footer>
+    <script>
+      const images = document.querySelectorAll('.gallery img');
+      function showImages() {
+        const trigger = window.innerHeight * 0.85;
+        images.forEach(img => {
+          const top = img.getBoundingClientRect().top;
+          if (top < trigger) {
+            img.classList.add('show');
+          }
+        });
+      }
+      window.addEventListener('scroll', showImages);
+      window.addEventListener('load', showImages);
+      const canvas = document.getElementById("gold-dust");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      let particles = [];
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.radius = Math.random() * 2 + 0.5;
+          this.speedY = Math.random() * 0.5 + 0.2;
+          this.opacity = Math.random() * 0.5 + 0.3;
+        }
+        update() {
+          this.y -= this.speedY;
+          if (this.y < 0) {
+            this.y = canvas.height;
+            this.x = Math.random() * canvas.width;
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(212,175,55,${this.opacity})`;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = "rgba(212,175,55,0.8)";
+          ctx.fill();
+        }
+      }
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < 120; i++) {
+          particles.push(new Particle());
+        }
+      }
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+      initParticles();
+      animate();
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initParticles();
+      });
+    </script>
+  </body>
+</html>
